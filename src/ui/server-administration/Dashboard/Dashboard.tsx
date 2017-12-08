@@ -11,7 +11,7 @@ import './Dashboard.scss';
 
 export const displayPlatform = (platform: Platform) => {
   const title = getPlatformTitle(platform);
-  const language = getPlatformTitle(platform);
+  const language = getPlatformLanguage(platform);
   return `${title} (${language})`;
 };
 

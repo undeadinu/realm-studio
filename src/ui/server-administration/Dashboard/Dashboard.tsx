@@ -1,23 +1,18 @@
 import * as React from 'react';
 import { Button } from 'reactstrap';
 
-import { Platform } from '.';
+import { getPlatformLanguage, getPlatformTitle, Platform } from '.';
 import nodeJsLogo from '../../../../static/svgs/node-js-logo.svg';
 import xamarinLogo from '../../../../static/svgs/xamarin-logo.svg';
+import { IUser } from '../../../services/ros';
 import { PlatformOverlay } from './PlatformOverlay';
 
 import './Dashboard.scss';
 
-const displayPlatform = (platform: Platform) => {
-  if (platform === 'android') {
-    return 'Android (Java)';
-  } else if (platform === 'apple') {
-    return 'iOS / macOS (Swift / Objective C)';
-  } else if (platform === 'javascript') {
-    return 'React Native / Node.js (JavaScript)';
-  } else if (platform === 'xamarin') {
-    return 'Xamarin (.NET)';
-  }
+export const displayPlatform = (platform: Platform) => {
+  const title = getPlatformTitle(platform);
+  const language = getPlatformTitle(platform);
+  return `${title} (${language})`;
 };
 
 interface IDashboardProps {
@@ -29,6 +24,7 @@ interface IDashboardProps {
   onSelectPlatform: (platform: Platform) => void;
   onShowCloudTutorial: () => void;
   selectedPlatform?: Platform;
+  serverUrl: string;
 }
 
 export const Dashboard = ({
@@ -40,6 +36,7 @@ export const Dashboard = ({
   onSelectPlatform,
   onShowCloudTutorial,
   selectedPlatform,
+  serverUrl,
 }: IDashboardProps) => (
   <section className="Dashboard">
     <h2 className="Dashboard__Heading">
@@ -110,6 +107,7 @@ export const Dashboard = ({
       <PlatformOverlay
         onClose={onDeselectPlatform}
         platform={selectedPlatform}
+        serverUrl={serverUrl}
       />
     ) : null}
   </section>

@@ -7,8 +7,33 @@ import { Dashboard } from './Dashboard';
 
 export type Platform = 'android' | 'apple' | 'javascript' | 'xamarin';
 
+export const getPlatformTitle = (platform: Platform) => {
+  if (platform === 'android') {
+    return 'Android';
+  } else if (platform === 'apple') {
+    return 'iOS / macOS';
+  } else if (platform === 'javascript') {
+    return 'React Native / Node.js';
+  } else if (platform === 'xamarin') {
+    return 'Xamarin';
+  }
+};
+
+export const getPlatformLanguage = (platform: Platform) => {
+  if (platform === 'android') {
+    return 'Java';
+  } else if (platform === 'apple') {
+    return 'Swift / Objective C';
+  } else if (platform === 'javascript') {
+    return 'JavaScript';
+  } else if (platform === 'xamarin') {
+    return '.NET';
+  }
+};
+
 interface IDashboardContainerProps {
   isCloudTenant: boolean;
+  serverUrl: string;
 }
 
 interface IDashboardContainerState {
@@ -24,6 +49,7 @@ class DashboardContainer extends React.Component<
     return (
       <Dashboard
         isCloudTenant={this.props.isCloudTenant}
+        serverUrl={this.props.serverUrl}
         {...this.state}
         {...this}
       />

@@ -44,7 +44,9 @@ export const ServerAdministration = ({
 }) => {
   let content = null;
   if (user && activeTab === Tab.Dashboard) {
-    content = <Dashboard isCloudTenant={isCloudTenant} />;
+    content = (
+      <Dashboard isCloudTenant={isCloudTenant} serverUrl={user.server} />
+    );
   } else if (user && activeTab === Tab.Realms) {
     content = (
       <RealmsTableContainer

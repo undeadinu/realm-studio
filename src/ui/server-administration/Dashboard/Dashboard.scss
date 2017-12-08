@@ -2,6 +2,7 @@
 
 .Dashboard {
   align-items: center;
+  color: $color-charcoal;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -53,13 +54,14 @@
   &__PlatformOverlay {
     background: $overlay-background;
     bottom: 0;
+    color: $white;
     left: 0;
+    padding: $spacer;
     position: absolute;
     right: 0;
     top: 0;
 
     &__Close {
-      color: $white;
       cursor: pointer;
       font-size: 2rem;
       position: absolute;

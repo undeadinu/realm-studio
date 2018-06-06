@@ -5,10 +5,16 @@ const package = require('../package.json');
 const packageLock = require('../package-lock.json');
 
 function checkVersion(name, version, lockPackage) {
-  assert(
-    semver.satisfies(lockPackage.version, version),
-    `Locks version (${lockPackage.version}) of ${name} didn't satisfy the package ${version}`,
-  );
+  // If the version is a file and the lock has is identical
+  if (version.indexOf('file:') === 0 && version === lockPackage.version) {
+    // No check required ...
+    return;
+  } else {
+    assert(
+      semver.satisfies(lockPackage.version, version),
+      `Locks version (${lockPackage.version}) of ${name} didn't satisfy the package ${version}`,
+    );
+  }
 }
 
 try {

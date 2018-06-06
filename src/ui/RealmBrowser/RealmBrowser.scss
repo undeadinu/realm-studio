@@ -1,0 +1,15 @@
+@import "~realm-studio-styles/variables";
+
+.RealmBrowser {
+  display: flex;
+  height: 100%;
+
+  &__SideBar {
+    background: $window-background;
+    width: 200px;
+  }
+
+  &__Content {
+    flex-grow: 1;
+  }
+}

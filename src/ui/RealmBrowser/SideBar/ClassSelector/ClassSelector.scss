@@ -1,0 +1,22 @@
+@import "~realm-studio-styles/variables";
+
+.ClassSelector {
+  padding: 0;
+
+  &__Class {
+    display: flex;
+    list-style: none;
+    padding: $spacer / 2;
+
+    &__Name {
+      flex-grow: 1;
+      overflow-x: hidden;
+      text-overflow: ellipsis;
+    }
+
+    &__Count {
+      flex-shrink: 0;
+      padding-left: $spacer / 2;
+    }
+  }
+}
